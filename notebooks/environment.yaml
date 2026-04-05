@@ -24,3 +24,4 @@ dependencies:
   - bioconductor-org.dr.eg.db
   - bioconductor-org.rn.eg.db
   - bioconductor-mixomics
+  - bioconductor-anndatar
