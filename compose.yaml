@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: tyamadabiodataeng/jupyter-bioinformatics-postgres
+    container_name: postgres
+    build:
+      context: ./postgres
+      dockerfile: ../dockerfiles/postgres/Dockerfile
+    environment:
+      - TZ=Asia/Tokyo
+    env_file:
+      - ./postgres/.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - jupyter_bioinfo_pg_data:/var/lib/postgresql
+    networks:
+      - jupyter-bioinfo-network
+  jupyter:
+    build: 
+      context: ./notebooks
+      dockerfile: ../dockerfiles/jupyter/Dockerfile
+      args:
+        DIR_WORK: "/usr/src"
+        ENV_YAML: "environment.yaml"
+        VENV: "bioinfo"
+        REQ_TXT: "requirements.txt"
+    image: tyamadabiodataeng/jupyter-bioinformatics
+    container_name: jupyter
+    command: jupyter lab --ip=0.0.0.0 --allow-root --LabApp.token=''
+    ports:
+     - "8888:8888"
+    volumes:
+     - ./notebooks:/usr/src
+    tty: true
+    stdin_open: true
+    depends_on:
+      - postgres
+    networks:
+      - jupyter-bioinfo-network
+
+networks:
+  jupyter-bioinfo-network:
+    driver: bridge
+
+volumes:
+  jupyter_bioinfo_pg_data:
