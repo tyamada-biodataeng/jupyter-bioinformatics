@@ -3,7 +3,53 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - python=3.11
+  - python=3.12
+  - black
+  - ruff
+  - mypy
+  - tox
+  - structlog
+  - pytest
+  - pytest-snapshot
+  - line_profiler
+  - memory_profiler
+  - mkdocs
+  - numpy
+  - scipy
+  - statsmodels
+  - matplotlib
+  - openpyxl
+  - python-dotenv
+  - psycopg
+  - sqlalchemy
+  - sqlalchemy-utils
+  - pandas
+  - polars-lts-cpu
+  - ibis-framework
+  - seaborn
+  - requests
+  - scikit-learn
+  - xgboost
+  - lightgbm
+  - catboost
+  - optuna
+  - hyperopt
+  - pycaret
+  - jupyterlab
+  - ipywidgets
+  - ipympl
+  - ipytest
+  - streamlit
+  - pygwalker
+  - pydantic
+  - sqlmodel
+  - alembic
+  - sqlacodegen
+  - pandera
+  - rdkit
+  - biopython
+  - anndata
+  - scanpy
   - r-base
   - r-essentials
   - r-rlang
